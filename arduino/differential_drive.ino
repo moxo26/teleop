@@ -1,32 +1,34 @@
 /*
  * Differential Drive
  *
- * This sketch takes in a geometry_msgs/Twist message 
- * and writes it to left and right Servos. This is an 
+ * This sketch takes in a geometry_msgs/Twist message
+ * and writes it to left and right Servos. This is an
  * adaptation of:
  * www.ros.org/wiki/rosserial_arduino_demos
- * 
+ *
  * Input: geometry_msgs/Twist cmd_msg that corresponds to
  *        commands to send the differential drive robot
- *        
+ *
  * Output: Movement based on the geometry_msgs/Twist commands
- * 
+ *
  * Subscribers: "servo" receives a geometry_msg/Twist command
- *              
- * Direction conventions used:             
+ *
+ * Publishers: None
+ *
+ * Direction conventions used:
  *      TRANSLATIONS
  *      ------------
  *              FORWARD: linear.x = 1
  *              REVERSE: linear.x = -1
- *      
+ *
  *      ROTATIONS
  *      ---------
  *              COUNTER CLOCKWISE: angular.z = 1
  *              CLOCKWISE        : angular.z = -1
- * 
+ *
  * Written by: Josh Saunders
  * Written on: 12/22/2016
- * 
+ *
  * Modified by:
  * Modified on:
  */
@@ -37,7 +39,7 @@
  #include <WProgram.h>
 #endif
 
-#include <Servo.h> 
+#include <Servo.h>
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
 
@@ -45,7 +47,7 @@ ros::NodeHandle  nh;
 
 // Angles for the servos
 const int CW   = 155; // ClockWise
-const int CCW  = 25;  // Counter-ClockWise 
+const int CCW  = 25;  // Counter-ClockWise
 const int STOP = 90;  // Stop
 
 Servo servo_left;
@@ -56,7 +58,7 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
 
   int direction_left  = STOP;
   int direction_right = STOP;
-  
+
   float linear = cmd_msg.linear.x;
   float angular = cmd_msg.angular.z;
 
@@ -81,8 +83,8 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
     direction_left = STOP;
     direction_right = STOP;
   }
-  
-  servo_left.write(direction_left); //set servo_left angle 
+
+  servo_left.write(direction_left); //set servo_left angle
   servo_right.write(direction_right); //set servo_right angle
 }
 
@@ -91,7 +93,7 @@ ros::Subscriber<geometry_msgs::Twist> sub_servo("servo", servo_cb);
 void setup(){
   nh.initNode();
   nh.subscribe(sub_servo);
-  
+
   servo_left.attach(8); //attach it to pin 8
   servo_right.attach(9); //attach it to pin 9
 }
