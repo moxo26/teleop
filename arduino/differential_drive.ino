@@ -66,22 +66,27 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
     // Go forward
     direction_left = CCW;
     direction_right = CW;
+    Serial.print("Translate forward\n");
   } else if(linear < 0) {
     // Go backward
     direction_left = CW;
     direction_right = CCW;
+    Serial.print("Translate backward\n");
   } else if (angular > 0) {
     // Rotate clockwise
     direction_left = CW;
     direction_right = CCW;
+    Serial.print("Rotate clockwise\n");
   } else if (angular < 0) {
     // Rotate counter clockwise
     direction_left = CCW;
     direction_right = CW;
+    Serial.print("Rotate counter clockwise\n");
   } else {
     // STOP!
     direction_left = STOP;
     direction_right = STOP;
+    Serial.print("Stop\n");
   }
 
   servo_left.write(direction_left); //set servo_left angle
