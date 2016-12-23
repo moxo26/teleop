@@ -11,7 +11,7 @@
  *
  * Output: Movement based on the geometry_msgs/Twist commands
  *
- * Subscribers: "servo" receives a geometry_msg/Twist command
+ * Subscribers: "cmd_vel" receives a geometry_msg/Twist command
  *
  * Publishers: None
  *
@@ -93,11 +93,11 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
   servo_right.write(direction_right); //set servo_right angle
 }
 
-ros::Subscriber<geometry_msgs::Twist> sub_servo("servo", servo_cb);
+ros::Subscriber<geometry_msgs::Twist> sub_cmd_vel("cmd_vel", servo_cb);
 
 void setup(){
   nh.initNode();
-  nh.subscribe(sub_servo);
+  nh.subscribe(sub_cmd_vel);
 
   servo_left.attach(8); //attach it to pin 8
   servo_right.attach(9); //attach it to pin 9
