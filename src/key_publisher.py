@@ -32,11 +32,16 @@ if __name__ == '__main__':
     key_pub = rospy.Publisher('keys', String, queue_size=1)
     rospy.init_node("keyboard_driver")
     rate = rospy.Rate(100)
+
+    # Save attributes
     old_attr = termios.tcgetattr(sys.stdin)
     tty.setcbreak(sys.stdin.fileno())
+
     print "Publishing keystrokes. Press Ctrl-C to exit..."
+
     while not rospy.is_shutdown():
         if select.select([sys.stdin], [], [], 0)[0] ==[sys.stdin]:
+            # Capture one keystroke at a time instead of entire line
             key_pub.publish(sys.stdin.read(1))
         rate.sleep()
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_attr)
