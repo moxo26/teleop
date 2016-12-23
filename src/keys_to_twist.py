@@ -6,7 +6,7 @@ This node takes in keystrokes along the 'keys' topic and
 publishes velocity commands based on the keystrokes.
 This is an adaptation of
 'keys_to_twist.py' from 'Programming Robots with ROS'
-by Quigley, Gerkey, Smart 2015 pg TODO.
+by Quigley, Gerkey, Smart 2015 pgs 116:124.
 
 Input: std_msgs/String that correspond to the keystrokes
 
