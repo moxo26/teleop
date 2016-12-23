@@ -12,7 +12,7 @@ Input: std_msgs/String that correspond to the keystrokes
 
 Output: geometry_msgs/Twist that correspond to velocities
 
-Subscribers: 'keys'
+Subscribers: 'keys' with std_msgs/String data type
 
 Publishers: 'cmd_vel' with geometry_msgs/Twist data type
 
