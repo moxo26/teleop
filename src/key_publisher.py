@@ -41,7 +41,9 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         if select.select([sys.stdin], [], [], 0)[0] ==[sys.stdin]:
-            # Capture one keystroke at a time instead of entire line
+            # Capture one keystroke at a time instead of an entire line
             key_pub.publish(sys.stdin.read(1))
         rate.sleep()
+
+    # Put the console back into standard mode
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_attr)
