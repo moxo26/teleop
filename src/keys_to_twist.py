@@ -26,3 +26,21 @@ Modified on:
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
+
+from KeyboardController import KeyboardController
+
+if __name__ == '__main__':
+    rospy.init_node('keys_to_twist')
+    key_mapping = { 'w': [0, 1],  'x': [0, -1],
+                    'a': [-1, 0], 'd': [1, 0],
+                    's': [0, 0]  }
+    vel_scales = [1, 1]
+    cmd_topic = 'cmd_vel'
+    keys_topic = 'keys'
+
+    kbc = KeyboardController(key_mapping, vel_scales, cmd_topic, keys_topic)
+
+    rate = rospy.Rate(10)
+
+    while not rospy.is_shutdown():
+        rate.sleep()
