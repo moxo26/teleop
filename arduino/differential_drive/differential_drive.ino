@@ -29,8 +29,13 @@
  * Written by: Josh Saunders
  * Written on: 12/22/2016
  *
- * Modified by:
- * Modified on:
+ * Modified by: Josh Saunders
+ * Modified on: 1/2/2016
+ * 
+ * How to run: 
+ * - Make sure that 'roscore' is running
+ * - Run 'rosrun rosserial_python serial_node.py /dev/ttyUSB0' in the terminal.
+ *   - Replace 'ttyUSB0' with the port that your device is connected to
  */
 
 #if (ARDUINO >= 100)
