@@ -32,6 +32,8 @@ class KeyboardController(object):
         self.last_twist.angular.z = vels[0]
         self.last_twist.linear.x  = vels[1]
         self.twist_pub(self.last_twist)
-
+        # To stop the robot if no commands are being received
+        self.last_twist = Twist ()
+        
     def twist_pub(self, twist):
         self.cmd_pub.publish(twist)
