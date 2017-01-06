@@ -51,9 +51,9 @@
 ros::NodeHandle  nh;
 
 // Angles for the servos
-const int CW   = 135; // ClockWise
-const int CCW  = 45;  // Counter-ClockWise
-const int STOP = 90;  // Stop
+const float STOP = 90;  // Stop
+const float LEFT_SCALE = 0.5;
+const float RIGHT_SCALE = 0.5;
 
 Servo servo_left;
 Servo servo_right;
@@ -69,26 +69,26 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
 
   if (linear > 0) {
     // Go forward
-    direction_left = CCW;
-    direction_right = CW;
+    direction_left = int ( STOP * (1 - LEFT_SCALE * linear) );
+    direction_right = int ( STOP * (1 + RIGHT_SCALE * linear) );
     
     Serial.print("Translate forward\n");
   } else if(linear < 0) {
     // Go backward
-    direction_left = CW;
-    direction_right = CCW;
+    direction_left = int ( STOP * (1 + LEFT_SCALE * linear) );
+    direction_right = int ( STOP * (1 - RIGHT_SCALE * linear) );
     
     Serial.print("Translate backward\n");
   } else if (angular > 0) {
     // Rotate clockwise
-    direction_left = CCW;
-    direction_right = CCW;
+    direction_left = int ( STOP * (1 - LEFT_SCALE * angular) );
+    direction_right = int ( STOP * (1 - RIGHT_SCALE * angular) );
     
     Serial.print("Rotate clockwise\n");
   } else if (angular < 0) {
     // Rotate counter clockwise
-    direction_left = CW;
-    direction_right = CW;
+    direction_left = int ( STOP * (1 + LEFT_SCALE * angular) );
+    direction_right = int ( STOP * (1 + RIGHT_SCALE * angular) );
     
     Serial.print("Rotate counter clockwise\n");
   } else {
