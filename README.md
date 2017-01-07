@@ -11,7 +11,7 @@ This was developed using ROS Indigo and is developed and tested on Ubuntu 14.04.
 To install `joy` run `sudo apt-get install ros-indigo-joy` or clone the [joy repo](http://http://wiki.ros.org/joy "ROS joy package GitHub repo").
 
 ### [rosserial](http://http://http://wiki.ros.org/rosserial "ROS rosserial package")
-This uses `rosserial`, specifically [`rosserial_arduino`](http://http://http://wiki.ros.org/rosserial "ROS rosserial_arduino package"). This should not require any installation on your part as it comes with the full installation of ROS.
+This uses `rosserial`, specifically [`rosserial_arduino`](http://http://http://wiki.ros.org/rosserial_arduino "ROS rosserial_arduino package"). This should not require any installation on your part as it comes with the full installation of ROS.
 
 ## Running It
 It is recommended that the package be run via `launch` files, although it is possible to run each node individually. However, sometimes it *is* useful to run a node individually due to a connection problem with the Arduino, for example.
