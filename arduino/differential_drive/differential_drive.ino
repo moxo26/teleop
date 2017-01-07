@@ -1,5 +1,11 @@
 /*
  * Differential Drive
+ * 
+ * Written by: Josh Saunders
+ * Written on: 12/22/2016
+ *
+ * Modified by: Josh Saunders
+ * Modified on: 1/6/2016
  *
  * This sketch takes in a geometry_msgs/Twist message
  * and writes it to left and right Servos. This is an
@@ -26,16 +32,16 @@
  *              COUNTER CLOCKWISE: angular.z = 1
  *              CLOCKWISE        : angular.z = -1
  *
- * Written by: Josh Saunders
- * Written on: 12/22/2016
- *
- * Modified by: Josh Saunders
- * Modified on: 1/2/2016
- * 
+ * Constants: 
+ *      STOP (float)       : Angle that stops the servo
+ *      LEFT_SCALE (float) : Use this value to "tune" the system so that the servos spin at the same rate
+ *      RIGHT_SCALE (float): Use this value to "tune" the system so that the servos spin at the same rate
+ *      THRESHOLD (float)  : This value to keep the servos from spinning when the joystick is near center
+ *      
  * How to run: 
  * - Make sure that 'roscore' is running
- * - Run 'rosrun rosserial_python serial_node.py /dev/ttyUSB0' in the terminal.
- *   - Replace 'ttyUSB0' with the port that your device is connected to
+ * - Run 'rosrun rosserial_python serial_node.py /dev/ttyACMx' in the terminal.
+ *   [Note: Replace 'x' with the port that your device is connected to]
  */
 
 #if (ARDUINO >= 100)
@@ -50,8 +56,7 @@
 
 ros::NodeHandle  nh;
 
-// Angles for the servos
-const float STOP = 90;  // Stop
+const float STOP = 90;  // The stopping point for the servos is 90 degrees
 const float LEFT_SCALE = 0.15;
 const float RIGHT_SCALE = 0.15;
 const float THRESHOLD = 0.01;
