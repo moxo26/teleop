@@ -2,7 +2,7 @@
 This is the catkinized ROS package for the Teleoperation robot at California State University, Los Angeles.
 
 ## Installation
-Easy! Just clone the repo!
+Easy! Just clone the repo and compile your workspace!
 
 ## Dependencies
 This was developed using ROS Indigo and is developed and tested on Ubuntu 14.04. Any other versions of ROS or Ubuntu are not guaranteed to work. There are a couple packages that will need to be installed in order to use this package.
