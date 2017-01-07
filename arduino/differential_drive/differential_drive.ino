@@ -82,6 +82,8 @@ void servo_cb(const geometry_msgs::Twist& cmd_msg){
     Serial.print("Rotate\n");
   } else {
     // STOP!
+
+    // TODO: engage the brakes here...
     direction_left = STOP;
     direction_right = STOP;
     
