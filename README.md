@@ -8,7 +8,7 @@ Easy! Just clone the repo!
 This was developed using ROS Indigo and is developed and tested on Ubuntu 14.04. Any other versions of ROS or Ubuntu are not guaranteed to work. There are a couple packages that will need to be installed in order to use this package.
 
 ### [joy](http://http://wiki.ros.org/joy "ROS joy package")
-To install `joy` run `sudo apt-get install ros-indigo-joy` or clone the [joy repo](http://http://wiki.ros.org/joy "ROS joy package GitHub repo").
+To install `joy` run `sudo apt-get install ros-indigo-joy` or clone the [joy repo](https://github.com/ros-drivers/joystick_drivers "ROS joy package GitHub repo").
 
 ### [rosserial](http://http://http://wiki.ros.org/rosserial "ROS rosserial package")
 This uses `rosserial`, specifically [`rosserial_arduino`](http://http://http://wiki.ros.org/rosserial_arduino "ROS rosserial_arduino package"). This should not require any installation on your part as it comes with the full installation of ROS.
