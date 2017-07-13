@@ -1,0 +1,26 @@
+<launch>
+		
+		<node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+				<remap from="image" to="/kinect2/qhd/image_color_rect" />
+				<param name="~image_transport" value="compressed" />
+		</node>
+
+
+    <!-- Launches the key stroke publisher and a new xterm to type in -->
+    <node
+        pkg="teleop"
+        type="teleop_joy.py"
+        name="joystick_driver"
+    />
+
+    <!-- Launches the key to twist publisher -->
+    <!-- joy node -->
+    <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+        <param name="dev" type="string" value="/dev/input/js0" />
+        <param name="deadzone" value="0.12" />
+    </node>
+
+		
+
+</launch>
