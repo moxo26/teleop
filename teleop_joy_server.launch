@@ -1,3 +1,5 @@
+<export ROS_IP=192.168.1.193> 
+
 <launch>
 		<!-- Launches the Arduino differential drive ROS node -->
     <!-- Baud 57600 is used to ensure compatibility between arduino and PC -->
