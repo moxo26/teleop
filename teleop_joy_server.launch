@@ -1,6 +1,5 @@
-<export ROS_IP=192.168.1.193> 
-
 <launch>
+    <export ROS_IP=192.168.1.193> 
 		<!-- Launches the Arduino differential drive ROS node -->
     <!-- Baud 57600 is used to ensure compatibility between arduino and PC -->
     <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
