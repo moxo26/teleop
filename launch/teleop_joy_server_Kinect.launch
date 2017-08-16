@@ -1,12 +1,12 @@
 <launch>
+	<export ROS_IP=192.168.1.193>
 		<!-- Launches the Arduino differential drive ROS node -->
     <!-- Baud 57600 is used to ensure compatibility between arduino and PC -->
     <node pkg="rosserial_python" type="serial_node.py" name="serial_node1">
         <param name="port" value="/dev/ttyACM0"/>
         <param name="baud" value="57600"/>
     </node> 
-
-    <!-- Launches the Arduino differential drive ROS node -->
+ 		<!-- Launchex the Arduino Tilt Mechanism ROS node -->
     <!-- Baud 57600 is used to ensure compatibility between arduino and PC -->
     <node pkg="rosserial_python" type="serial_node.py" name="serial_node2">
         <param name="port" value="/dev/ttyACM1"/>
