@@ -15,18 +15,6 @@ This uses `rosserial`, specifically [`rosserial_arduino`](http://wiki.ros.org/ro
 
 ## Running It (OLD WAY)
 It is recommended that the package be run via `launch` files, although it is possible to run each node individually. However, sometimes it *is* useful to run a node individually due to a connection problem with the Arduino, for example.
-## Running It (NEW WAY)
-This requires two different terminals to be open and execution of two shell scripts.
-  1st Terminal
-  $ ssh teleoperation@teleoperation
-  $ source name_of_directory/devel/setup.bash
-  $ cd name_of_directory/src/teleop/misc
-  $ ./teleop_joy_server_Kinect.sh
-  
-  2nd Terminal
-  $ source name_of_direcory/devel/setup.bash
-  $ cd name_of_directory/src/teleop/misc
-  $ ./teleop_joy_client_Kinect.sh
 
 ### teleop_joy.launch
 This launch file connects to the Arduino motor driver, starts the joystick publisher, and the Twist message publisher for the joystick. To run, type `roslaunch teleop teleop_joy.launch` in the terminal.
@@ -36,6 +24,23 @@ This launch file connects to the Arduino motor driver, starts the keyboard publi
 
 ### arduino_driver.launch
 This launch file connects to the Arduino motor driver. To run, type `roslaunch teleop arduino_driver.launch` in the terminal.
+
+## Running It (NEW WAY)
+This requires two different terminals to be open and execution of two shell scripts.
+1st Terminal
+`ssh teleoperation@teleoperation`
+`source name_of_directory/devel/setup.bash`
+`cd name_of_directory/src/teleop/misc`
+`./teleop_joy_server_Kinect.sh`
+  
+2nd Terminal
+`source name_of_direcory/devel/setup.bash`
+`cd name_of_directory/src/teleop/misc`
+`./teleop_joy_client_Kinect.sh`
+
+**TIP:** Should you want to automatically be on the correct path every time you open up a new terminal without having to manually source everytime. DO the following: 
+`echo "source ~/name_of_working_directory/devel/setup.bash" >> ~/.bashrc`
+`source ~/.bashrc`
 
 ## Common Errors
 There are many issues that can arise when attempting to run the software.
