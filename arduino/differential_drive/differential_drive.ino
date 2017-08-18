@@ -7,6 +7,9 @@
  * Modified by: Josh Saunders
  * Modified on: 1/6/2016
  *
+ * Modified by: Jeovanny Reyes
+ * Modified on: 8/17/17
+ *
  * This sketch takes in a geometry_msgs/Twist message
  * and writes it to left and right Servos. This is an
  * adaptation of:
@@ -60,6 +63,7 @@ const float STOP = 90;  // The stopping point for the servos is 90 degrees
 const float LEFT_SCALE = 0.15;
 const float RIGHT_SCALE = 0.15;
 const float THRESHOLD = 0.01;
+int TRAN = 11; // Sending a signal to the transistor/relay
 
 Servo servo_left;
 Servo servo_right;
@@ -107,9 +111,14 @@ void setup(){
 
   servo_left.attach(8); //attach it to pin 8
   servo_right.attach(9); //attach it to pin 9
+ 
+ pinMode(TRAN, OUTPUT);
 }
 
 void loop(){
   nh.spinOnce();
   delay(1);
+ 
+ digitallWrite(TRAN, HIGH); //Activating the relay to diesngage the breaks
+ delay(1000);
 }
